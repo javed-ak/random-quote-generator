@@ -6,6 +6,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 
 
 interface QuoteProps {
+  // tag: string;
   quote: string;
   author: string;
 }
@@ -13,6 +14,7 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [bgColor, setBgColor] = useState("#000000"); 
   const [quoteInfo, setQuoteInfo] = useState<QuoteProps>({
+    // tag: '',
     quote: '',
     author: ''
   })
@@ -33,6 +35,7 @@ function App() {
       }
     })
     setQuoteInfo({
+      // tag: response.data[0].category,
       quote: response.data[0].quote,
       author: response.data[0].author
     })
@@ -44,6 +47,7 @@ function App() {
     <>
       <div className="h-screen w-screen flex flex-col justify-center items-center transition-colors duration-300" style={{backgroundColor: bgColor}}>
         <div id='quote-box' className="p-10 shadow-lg rounded-lg lg:max-w-2xl bg-slate-50 mx-5 lg:m-0" style={{color: bgColor}}>
+          {/* <div className="text-xs text-slate-50 rounded-lg p-1 inline" style={{backgroundColor: bgColor}}>{quoteInfo.tag}</div> */}
           <div className="flex gap-3">
             <div className=""><FaQuoteLeft size={30}/></div>
             <div className="text-lg md:text-2xl lg:text-4xl font-medium font-serif" id='text'>{quoteInfo.quote}</div>
