@@ -26,7 +26,7 @@ function App() {
 
 
   const getQuote = async () => {
-    const response = await axios.get('http://api.quotable.io/random')
+    const response = await axios.get('https://api.quotable.io/random')
     setQuoteInfo({
       quote: response.data.content,
       author: response.data.author
