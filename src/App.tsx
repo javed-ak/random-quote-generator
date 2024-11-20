@@ -26,7 +26,7 @@ function App() {
 
 
   const getQuote = async () => {
-    const response = await axios.get('https://api.quotable.io/random')
+    const response = await axios.get('https://zenquotes.io/api/random')
     setQuoteInfo({
       quote: response.data.content,
       author: response.data.author
@@ -36,10 +36,10 @@ function App() {
   return (
     <>
       <div className="h-screen w-screen flex flex-col justify-center items-center transition-colors duration-300" style={{backgroundColor: bgColor}}>
-        <div id='quote-box' className="p-10 shadow-lg rounded-lg max-w-2xl bg-slate-50" style={{color: bgColor}}>
+        <div id='quote-box' className="p-10 shadow-lg rounded-lg lg:max-w-2xl bg-slate-50" style={{color: bgColor}}>
           <div className="flex gap-3">
             <div className=""><FaQuoteLeft size={30}/></div>
-            <div className="text-4xl font-medium" id='text'>{quoteInfo.quote}</div>
+            <div className="text-lg lg:text-4xl font-medium" id='text'>{quoteInfo.quote}</div>
           </div>
           <div className="text-right mt-5" id='author'>- {quoteInfo.author}</div>
           <div className="flex justify-between my-5">
