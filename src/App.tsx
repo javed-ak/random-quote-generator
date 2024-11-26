@@ -12,6 +12,7 @@ interface QuoteProps {
 }
 function App() {
   const [loading, setLoading] = useState(true)
+  const [btnLoading, setBtnLoading] = useState(false)
   const [bgColor, setBgColor] = useState("#000000"); 
   const [quoteInfo, setQuoteInfo] = useState<QuoteProps>({
     // tag: '',
@@ -29,6 +30,7 @@ function App() {
 
 
   const getQuote = async () => {
+    setBtnLoading(true)
     const response = await axios.get('https://api.api-ninjas.com/v1/quotes?category=education', {
       headers: {
         'X-Api-Key': import.meta.env.VITE_API_KEY
@@ -40,6 +42,7 @@ function App() {
       author: response.data[0].author
     })
     setLoading(false)
+    setBtnLoading(false)
     changeColor();
   }
 
@@ -58,7 +61,7 @@ function App() {
             <div className="flex gap-2 justify-center items-center">
               Share: <a href={'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + quoteInfo.quote} target="_blank" id='tweet-quote'><FaSquareXTwitter size={30} /></a>
             </div>
-            <button className="rounded-lg text-slate-50 px-4 py-2" style={{backgroundColor: bgColor}} id='new-quote' onClick={getQuote}>{loading ? 'Loading...' : 'New Quote'}</button>
+            <button className={`rounded-lg text-slate-50 px-4 py-2 ${btnLoading && 'cursor-progress'}`} style={{backgroundColor: bgColor}} id='new-quote' onClick={getQuote}>{btnLoading ? 'Loading...' : 'New Quote'}</button>
           </div>
         <div className="text-slate-50 mt-5 font-light">by <a href="https:x.com/javed__ak" target="_blank">Javed</a></div>
       </div>
