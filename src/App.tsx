@@ -45,8 +45,9 @@ function App() {
 
   return (
     <>
+      {!loading ? 
       <div className="h-screen w-screen flex flex-col justify-center items-center transition-colors duration-300" style={{backgroundColor: bgColor}}>
-        <div id='quote-box' className="p-10 shadow-lg rounded-lg lg:max-w-2xl bg-slate-50 mx-5 lg:m-0" style={{color: bgColor}}>
+          <div id='quote-box' className="p-10 shadow-lg rounded-lg lg:max-w-2xl bg-slate-50 mx-5 lg:m-0" style={{color: bgColor}}>
           {/* <div className="text-xs text-slate-50 rounded-lg p-1 inline" style={{backgroundColor: bgColor}}>{quoteInfo.tag}</div> */}
           <div className="flex gap-3">
             <div className=""><FaQuoteLeft size={30}/></div>
@@ -59,9 +60,10 @@ function App() {
             </div>
             <button className="rounded-lg text-slate-50 px-4 py-2" style={{backgroundColor: bgColor}} id='new-quote' onClick={getQuote}>{loading ? 'Loading...' : 'New Quote'}</button>
           </div>
-        </div>
-        <div className="text-slate-50 mt-5 font-light">by <a href="https:x.com/javed__ak">Javed</a></div>
+        <div className="text-slate-50 mt-5 font-light">by <a href="https:x.com/javed__ak" target="_blank">Javed</a></div>
       </div>
+        </div> :
+        <div className="flex justify-center items-center h-screen">Loading...</div>}
     </>
   )
 }
